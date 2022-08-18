@@ -1,0 +1,39 @@
+version: '3'
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile   
+    container_name: php_container
+    restart: always
+    image: php_container
+    environment:
+      - APACHE_LOG_DIR=/var/log/apache2
+    volumes:
+      - ./src:/var/www/html
+      - ./log:/var/log/apache2
+    ports:
+    - 80:80
+  db:
+    image: mysql
+    container_name: db
+    # NOTE: use of "mysql_native_password" is not recommended: https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password
+    # (this is just an example, not intended to be a production configuration)
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./dbdata:/var/lib/mysql
+    ports:
+      - "3306:3306"
+  adminer:
+    container_name: adminer
+    image: adminer
+    restart: always
+    environment: 
+            ADMINER_DEFAULT_SERVER: db
+            ADMINER_DESIGN: pepa-linha-dark
+    ports:
+      - 8080:8080
+      
