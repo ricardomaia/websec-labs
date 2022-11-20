@@ -2,6 +2,8 @@
 
 Ambiente para treinamento sobre vulnerabilidades em aplicações web.
 
+![image](https://user-images.githubusercontent.com/1353811/202922879-3bd0619e-2ccf-4f53-a2f4-5e10af7c2991.png)
+
 ⚠️ **Atenção!**
 
 **As configurações de ambiente e código-fonte são intencionalmente vulneráveis e não devem ser expostas à Internet ou em ambientes de produção.**
