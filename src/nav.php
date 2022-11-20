@@ -12,9 +12,7 @@ defined('APP') or die('Access denied');
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/?page=phpinfo">PHP Info</a>
-                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="/?page=file-inclusion">File Inclusion</a>
                 </li>
@@ -24,15 +22,29 @@ defined('APP') or die('Access denied');
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="/?page=sql-injection">SQLi GET</a></li>
-                        <li><a class="dropdown-item" href="#">SQLi POST</a></li>
+                        <li><a class="dropdown-item" href="/?page=sql-injection-post">SQLi POST</a></li>
                         <li><a class="dropdown-item" href="#">SQLi Blind</a></li>
                     </ul>
                 </li>
+                <li class="nav-item"><a class="nav-link" href="/?page=clickjacking">Clickjacking</a></li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/?page=setup">Setup</a>
+                    <a class="nav-link" href="info.php">PHP Info</a>
                 </li>
             </ul>
-
         </div>
+        <?php
+        if (isset($_SESSION['username'])) {
+        ?>
+            <form action="/?page=logout" method="post">
+                <button class="btn btn-outline-primary my-sm-0" type="submit">Logout</button>
+            </form>
+            &nbsp;
+            <form action="/?page=profile" method="post">
+                <button class="btn btn-outline-secondary" type="submit">Profile</button>
+            </form>
+        <?php
+        };
+        ?>
     </div>
+
 </nav>

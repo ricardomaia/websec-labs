@@ -26,9 +26,13 @@ include("header.php");
     $_pages = array();
     $_pages["home"] = "home.php";
     $_pages["file-inclusion"] = "file_inclusion.php";
-    $_pages["phpinfo"] = "info.php";
     $_pages["sql-injection"] = "sql_injection.php";
-    $_pages["setup"] = "setup.php";
+    $_pages["sql-injection-post"] = "sql_injection_post.php";
+    $_pages['clickjacking'] = 'clickjacking.php';
+    $_pages['logout'] = 'logout.php';
+    $_pages['profile'] = 'profile.php';
+    $_pages['delete-account'] = 'delete-account.php';
+
 
     if (isset($_GET['page'])) {
         $page = $_GET['page'];
@@ -46,6 +50,16 @@ include("header.php");
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
+    <?php
+    if (isset($_GET['logout']) && $_GET['logout'] == 'true') {
+    ?>
+        <div class="alert alert-primary" role="alert">
+            User logged out!
+        </div>
+
+    <?php
+    }
+    ?>
 </body>
 
 </html>
