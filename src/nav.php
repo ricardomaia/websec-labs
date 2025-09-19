@@ -23,8 +23,14 @@ defined('APP') or die('Access denied');
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="/?page=sql-injection">SQLi GET</a></li>
                         <li><a class="dropdown-item" href="/?page=sql-injection-post">SQLi POST</a></li>
-                        <li><a class="dropdown-item" href="#">SQLi Blind</a></li>
+                        <li><a class="dropdown-item" href="/?page=sql-injection-blind">SQLi Blind</a></li>
                     </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/?page=xss-lab">XSS Lab</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/?page=session-lab">Session Management</a>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="/?page=clickjacking">Clickjacking</a></li>
                 <li class="nav-item">

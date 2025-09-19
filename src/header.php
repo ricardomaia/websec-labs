@@ -1,4 +1,6 @@
 <?php
 defined('APP') or die('Access denied');
 
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
