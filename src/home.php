@@ -57,6 +57,7 @@ defined('APP') or die('Access denied');
                             <ul class="list-unstyled">
                                 <li><strong>App:</strong> <a href="http://localhost" target="_blank">localhost:80</a></li>
                                 <li><strong>Adminer:</strong> <a href="http://localhost:8080" target="_blank">localhost:8080</a></li>
+                                <li><strong>Router Interno:</strong> <a href="http://localhost:8181" target="_blank">localhost:8181</a></li>
                             </ul>
                         </div>
                     </div>
@@ -64,6 +65,67 @@ defined('APP') or die('Access denied');
                         <small class="text-muted">
                             📋 Para documentação completa das credenciais, consulte o arquivo <code>CREDENTIALS.md</code>
                         </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CSRF/SSRF Demo Section -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card border-warning">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="card-title mb-0">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        🎯 Nova Demonstração: Ataque CSRF/SSRF
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p class="mb-2">
+                                <strong>Demonstração educacional</strong> de como uma página maliciosa pode atacar dispositivos na rede interna da vítima.
+                            </p>
+                            <p class="mb-3">
+                                Esta simulação mostra como atacantes exploram dispositivos com credenciais padrão (como roteadores Wi-Fi)
+                                para alterar configurações de DNS e executar comandos remotos.
+                            </p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6>🎯 Cenário:</h6>
+                                    <ul class="small">
+                                        <li>Dispositivo simulado: Roteador Wi-Fi</li>
+                                        <li>Credenciais padrão: admin/admin</li>
+                                        <li>Vulnerabilidades: CSRF + Login automático</li>
+                                        <li>Ações maliciosas: Alteração de DNS</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6>🔍 O que você aprenderá:</h6>
+                                    <ul class="small">
+                                        <li>Como ataques CSRF funcionam</li>
+                                        <li>Riscos de credenciais padrão</li>
+                                        <li>Importância do CORS</li>
+                                        <li>Técnicas de prevenção</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <h6>📱 Acesso aos Serviços:</h6>
+                            <div class="d-grid gap-2">
+                                <a href="/?page=csrf-ssrf-demo" class="btn btn-danger btn-sm">
+                                    🚀 Página Maliciosa
+                                </a>
+                                <a href="http://localhost:8181" target="_blank" class="btn btn-info btn-sm">
+                                    📶 Roteador (Alvo)
+                                </a>
+                            </div>
+                            <small class="text-muted mt-2 d-block">
+                                Abra ambos em abas separadas para ver o ataque funcionando
+                            </small>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -82,6 +144,8 @@ defined('APP') or die('Access denied');
                     <li><strong>Implemente CSP</strong> - Content Security Policy previne XSS</li>
                     <li><strong>Configure headers de segurança</strong> - X-Frame-Options, X-XSS-Protection, etc.</li>
                     <li><strong>Mantenha software atualizado</strong> - Aplique patches de segurança regularmente</li>
+                    <li><strong>Altere credenciais padrão</strong> - Nunca mantenha senhas de fábrica</li>
+                    <li><strong>Implemente tokens CSRF</strong> - Proteja formulários contra ataques CSRF</li>
                 </ul>
             </div>
         </div>

@@ -35,3 +35,20 @@ services:
       ADMINER_DESIGN: pepa-linha-dark
     ports:
       - 8080:8080
+  router:
+    build:
+      context: .
+      dockerfile: Dockerfile.router
+    container_name: router
+    restart: always
+    image: router_container
+    environment:
+      - APACHE_LOG_DIR=/var/log/apache2
+    volumes:
+      - ./log:/var/log/apache2
+      - ./router_data:/var/www/html/data
+      - ./router:/var/www/html
+    ports:
+      - 8181:80
+    networks:
+      - default

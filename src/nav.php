@@ -33,6 +33,15 @@ defined('APP') or die('Access denied');
                     <a class="nav-link" href="/?page=session-lab">Session Management</a>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="/?page=clickjacking">Clickjacking</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="csrfDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        CSRF Demo
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="csrfDropdown">
+                        <li><a class="dropdown-item" href="/?page=csrf-ssrf-demo">Com CORS (Demo)</a></li>
+                        <li><a class="dropdown-item" href="/?page=csrf-realistic-demo">Realista (Sem CORS)</a></li>
+                    </ul>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="info.php">PHP Info</a>
                 </li>

