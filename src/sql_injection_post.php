@@ -119,11 +119,21 @@ include("db.php");
 
         if ($result !== false) {
             if ($result->num_rows > 0) {
-                $_SESSION['username'] = $username;
+                // Extrair username real do primeiro resultado da query
+                $first_row = $result->fetch_assoc();
+                $real_username = $first_row['username'];
+                $_SESSION['username'] = $real_username;
+
                 echo "<div class='alert alert-success' role='alert'>";
                 echo "<strong>✅ Login realizado com sucesso!</strong><br>";
-                echo "Usuário autenticado: <strong>" . htmlspecialchars($username) . "</strong>";
+                echo "Usuário autenticado: <strong>" . htmlspecialchars($real_username) . "</strong>";
+                if ($real_username !== $username) {
+                    echo "<br><small class='text-muted'>Input original: " . htmlspecialchars($username) . "</small>";
+                }
                 echo "</div>";
+
+                // Reset result pointer for subsequent processing
+                $result->data_seek(0);
 
                 // Mostrar dados encontrados se for um UNION attack
                 if ($result->num_rows > 1 || $result->field_count > 4) {
