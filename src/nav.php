@@ -24,6 +24,8 @@ defined('APP') or die('Access denied');
                         <li><a class="dropdown-item" href="/?page=sql-injection">SQLi GET</a></li>
                         <li><a class="dropdown-item" href="/?page=sql-injection-post">SQLi POST</a></li>
                         <li><a class="dropdown-item" href="/?page=sql-injection-blind">SQLi Blind</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/?page=sql-injection-product">📦 SQLi Products</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">

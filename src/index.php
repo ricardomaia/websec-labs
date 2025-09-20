@@ -29,6 +29,7 @@ include("header.php");
     $_pages["sql-injection"] = "sql_injection.php";
     $_pages["sql-injection-post"] = "sql_injection_post.php";
     $_pages["sql-injection-blind"] = "sql_injection_blind.php";
+    $_pages["sql-injection-product"] = "sql_injection_product.php";
     $_pages["xss-lab"] = "xss_lab.php";
     $_pages["session-lab"] = "session_lab.php";
     $_pages['clickjacking'] = 'clickjacking.php';
